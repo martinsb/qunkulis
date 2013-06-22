@@ -1,0 +1,8 @@
+<!DOCTYPE RCC>
+<RCC version="1.0">
+ <qresource prefix="/">
+ 	<file>jx9/store.jx9</file>
+ 	<file>jx9/exists.jx9</file>
+ 	<file>jx9/fetch-by-id.jx9</file>
+ </qresource>
+</RCC>

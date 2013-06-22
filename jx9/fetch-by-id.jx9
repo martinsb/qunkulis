@@ -1,0 +1,1 @@
+$zRec = db_fetch_by_id($zCol, $id);

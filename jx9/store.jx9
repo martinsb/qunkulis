@@ -1,0 +1,15 @@
+if (!db_exists($zTable)) {
+	$rc = db_create($zTable);
+	if (!$rc) {
+		print db_errlog();
+		return;
+	}
+}
+
+$rc = db_store($zTable, $zRec);
+
+if (!$rc) {
+	print db_errlog();
+	return;
+}
+$last_id = $zRec.__id;
