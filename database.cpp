@@ -338,6 +338,18 @@ void Database::setErrorCode(int rc)
 	errorCode = static_cast<ErrorCode>(rc);
 }
 
+VirtualMachine* Database::compile(const QString& bytecode)
+{
+    unqlite_vm* pVm = NULL;
+    QByteArray bytes = bytecode.toUtf8();
+    int rc = unqlite_compile(pDb, bytes.data(), bytes.length(), &pVm);
+    setErrorCode(rc);
+    if (rc == UNQLITE_OK) {
+        return new VirtualMachine(pVm, this);
+    }
+    return NULL;
+} 
+
 unqlite_vm* Database::getVM(const QString& key)
 {		
 	if (bytecodeCache.contains(key)) {

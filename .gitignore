@@ -1,0 +1,5 @@
+Makefile
+*.o
+*.swp
+moc_*.cpp
+qrc_*.cpp

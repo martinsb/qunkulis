@@ -9,7 +9,7 @@ INCLUDEPATH += .
 
 include(unqlite-qt.pri)
 
-CONFIG += qt debug
+CONFIG += qt
 
 SOURCES +=  main.cpp 
 
