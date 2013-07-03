@@ -35,6 +35,19 @@ enum ErrorCode
     IsReadOnly      = UNQLITE_READ_ONLY,
     LockingError    = UNQLITE_LOCKERR
 };
+
+enum OpenMode
+{
+    Create = UNQLITE_OPEN_CREATE,
+    ReadWrite = UNQLITE_OPEN_READWRITE,
+    ReadOnly = UNQLITE_OPEN_READONLY,
+    MMap = UNQLITE_OPEN_MMAP,
+    Temp = UNQLITE_OPEN_TEMP_DB,
+    InMemory = UNQLITE_OPEN_IN_MEMORY,
+    OmitJournaling = UNQLITE_OPEN_OMIT_JOURNALING,
+    NoMutex = UNQLITE_OPEN_NOMUTEX
+};
+
 };
 
 #endif //ERRORCODE_H

@@ -12,7 +12,6 @@ extern "C"
 }
 
 #include "database.h"
-#include "executionresult.h"
 
 namespace UnqliteQt
 {
@@ -27,7 +26,11 @@ class VirtualMachine : public QObject
 public:    
     virtual ~VirtualMachine();
 
-    const ExecutionResult* exec(const QMap<QString, QVariant>& params);
+    VirtualMachine& setParameter(const QString& name, const QVariant& value);
+
+    QVariant extractVariable(const QString& name);    
+
+    bool execute();
     bool reset();
     
 signals:
@@ -39,6 +42,12 @@ private:
     friend class Database;
 
 private:
+	unqlite_value* createUnqlite(const QVariant& var);
+	QVariant createVariant(unqlite_value* pVal);
+	void updateLastError(int rc);
+
+private:
+	ErrorCode m_rc;
     unqlite_vm* m_pVm;
     
 };
