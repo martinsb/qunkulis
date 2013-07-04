@@ -3,3 +3,4 @@ Makefile
 *.swp
 moc_*.cpp
 qrc_*.cpp
+**/.clang_complete
