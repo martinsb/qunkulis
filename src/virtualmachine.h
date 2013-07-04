@@ -26,7 +26,9 @@ class VirtualMachine : public QObject
 public:    
     virtual ~VirtualMachine();
 
-    VirtualMachine& setParameter(const QString& name, const QVariant& value);
+    VirtualMachine& addArgument(const QString& name);
+
+    VirtualMachine& setVariable(const QString& name, const QVariant& value);
 
     QVariant extractVariable(const QString& name);    
 

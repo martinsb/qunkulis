@@ -22,7 +22,9 @@ private slots:
 
     void testCompile();
 
-    void testVMExecution();
+    void testExecWithVariables();
+
+    void testExecWithArguments();
 };
 
 #endif //_TST_QUNKULIS_H
