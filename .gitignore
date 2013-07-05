@@ -1,6 +1,8 @@
 Makefile
 *.o
 *.swp
+*.swo
 moc_*.cpp
 qrc_*.cpp
 **/.clang_complete
+tests/tests

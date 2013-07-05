@@ -54,4 +54,22 @@ void TestQunkulis::testExecWithArguments()
     delete vm;
 }
 
+#define INSERT_PROG \
+    "if (!db_exists('users')) {" \
+    "  db_create('users');" \
+    "}" \
+    "$zRec = { name: 'foo', age: 27 };" \
+    "db_store('users', $zRrec);" \
+    "$num = db_total_records('users');"
+void TestQunkulis::testScriptInsertRecord()
+{
+    VirtualMachine* vm = m_db.compile(INSERT_PROG);
+    QVERIFY(vm);
+    vm->reset();
+    QVERIFY(vm->execute());
+    QVariant result = vm->extractVariable("num");
+    QCOMPARE(result.toInt(), 1);
+    delete vm;   
+}
+
 QTEST_MAIN(TestQunkulis)

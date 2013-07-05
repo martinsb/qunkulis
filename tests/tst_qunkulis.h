@@ -25,6 +25,8 @@ private slots:
     void testExecWithVariables();
 
     void testExecWithArguments();
+
+    void testScriptInsertRecord();
 };
 
 #endif //_TST_QUNKULIS_H
