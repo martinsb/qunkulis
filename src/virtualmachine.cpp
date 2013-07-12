@@ -19,15 +19,15 @@ VirtualMachine::~VirtualMachine()
    }
 }
 
-VirtualMachine& VirtualMachine::addArgument(const QString& arg)
+VirtualMachine* VirtualMachine::addArgument(const QString& arg)
 {
     QByteArray argBytes = arg.toUtf8();
     int rc = unqlite_vm_config(m_pVm, UNQLITE_VM_CONFIG_ARGV_ENTRY, argBytes.data());
     updateLastError(rc);
-    return *this;
+    return this;
 }
 
-VirtualMachine& VirtualMachine::setVariable(const QString& name, const QVariant& value)
+VirtualMachine* VirtualMachine::setVariable(const QString& name, const QVariant& value)
 {	
 	unqlite_value* pVal = createUnqlite(value);
 	if (pVal) {
@@ -36,7 +36,7 @@ VirtualMachine& VirtualMachine::setVariable(const QString& name, const QVariant&
 		unqlite_value_release(pVal);
 		updateLastError(rc);
 	}
-	return *this;
+	return this;
 }
 
 QVariant VirtualMachine::extractVariable(const QString& name)
